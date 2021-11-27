@@ -1,13 +1,13 @@
-import { Center, Container, FormLabel, Spinner } from "@chakra-ui/react";
 import { PokemonOption } from "../types/PokemonOption";
-import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
 import { PokemonType } from "../types/PokemonType";
 import { allPokemonNames } from "../util/AllPokemonNames";
 import { SWRResponse } from "swr";
 import { usePokemonTypes } from "../util/UsePokemonTypes";
-import { TypeColumns } from "../components/TypeColumns";
 import { useState } from "react";
-import { Select } from "chakra-react-select";
+import { Autocomplete, Box, CircularProgress, Container, TextField } from "@mui/material";
+import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
+import { TypeStack } from "../components/TypeStack";
+import { TypeColumns } from "../components/TypeColumns";
 
 function Home() {
     const [pokemonOption, setPokemonOption] = useState<PokemonOption>(allPokemonNames[Math.floor(Math.random() * allPokemonNames.length)]);
@@ -15,23 +15,34 @@ function Home() {
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = usePokemonTypes(pokemonOption)
 
     return (
-        <Container mt={ 12 } maxWidth={ "xs" }>
-            <Select options={ allPokemonNames }
-                    aria-label={"Select Pokémon"}
-                    onChange={ (x: PokemonOption) => setPokemonOption(x as PokemonOption) }
-                    defaultValue={ pokemonOption }
+        <Container maxWidth="sm">
+            <Autocomplete
+                disablePortal
+                disableClearable
+                id="combo-box-demo"
+                onChange={ (event, values) => setPokemonOption(values) }
+                options={ allPokemonNames }
+                sx={ { width: "20em", marginTop: "3em", marginBottom: "0.5em" } }
+                renderInput={ (params) => <TextField { ...params } key={ params.id } label="Pokémon"/> }
             />
             { pokemonTypes
                 ? <>
                     <SelectedPokemonTypes pokemonTypes={ pokemonTypes }/>
-                    <TypeColumns pokemonTypes={ pokemonTypes }/>
-            </>
-            : <Center mt={12}>
-              <Spinner/>
-            </Center>
-        }
-      </Container>
-  )
+                    <TypeColumns pokemonTypes={pokemonTypes}/>
+                </>
+                : <Box sx={ {
+                    width: "20em",
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: "1em"
+                } }>
+                    <CircularProgress/>
+                </Box>
+
+
+            }
+        </Container>
+    )
 }
 
 export default Home

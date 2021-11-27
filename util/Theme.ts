@@ -1,7 +1,6 @@
-import { extendTheme } from "@chakra-ui/react";
+import { PokemonTypeColors } from "../types/PokemonTypeColors";
 
-
-const pokemonTypeColors = {
+export const pokemonTypeColors: PokemonTypeColors = {
     normal: {
         100: "#dbdace",
         200: "#cfcdc2",
@@ -201,10 +200,3 @@ const pokemonTypeColors = {
         900: "#5e4003"
     }
 }
-
-export const theme = extendTheme({
-    config: {
-        useSystemColorMode: true,
-    },
-    colors: pokemonTypeColors
-})

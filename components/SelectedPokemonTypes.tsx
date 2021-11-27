@@ -1,15 +1,23 @@
+import { capitalize, Chip, useMediaQuery } from "@mui/material";
 import { PokemonType } from "../types/PokemonType";
-import { HStack, Tag } from "@chakra-ui/react";
-import { PokemonTag } from "./PokemonTag";
+import { pokemonTypeColors } from "../util/Theme";
+import { PokemonTypeTag } from "./PokemonTypeTag";
 
 export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
+
+
     return (
-        <HStack mt={2}>
-            {pokemonTypes
-                .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-                .map((pokemonType, idx) => {
-                    return <PokemonTag key={idx} typeName={pokemonType.name} />
-                })}
-        </HStack>
+        <div style={{
+            display: "flex"
+        }}>
+            {
+                pokemonTypes
+                    .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
+                    .map((pokemonType: PokemonType, idx) => {
+                        return <PokemonTypeTag key={idx} pokemonTypeName={pokemonType.name}/>
+                    })
+            }
+        </div>
     )
+
 }

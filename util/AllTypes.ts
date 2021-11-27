@@ -1,11 +1,11 @@
-export type pokemonTypeName =
+export type PokemonTypeName =
     "normal" | "fighting" | "flying"
     | "poison" | "ground" | "rock" | "bug"
     | "ghost" | "steel" | "fire" | "water"
     | "grass" | "psychic" | "ice" | "dragon"
     | "dark" | "fairy" | "electric"
 
-export const allTypes: pokemonTypeName[] = [
+export const allTypes: PokemonTypeName[] = [
     "normal", "fighting", "flying",
     "poison", "ground", "rock",
     "bug", "ghost", "steel",

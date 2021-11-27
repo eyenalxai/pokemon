@@ -1,24 +1,24 @@
 import { PokemonType } from "../types/PokemonType";
-import { allTypes } from "../util/AllTypes";
+import { allTypes, PokemonTypeName } from "../util/AllTypes";
 import { TypeStack } from "./TypeStack";
-import { Flex, HStack } from "@chakra-ui/react";
+import { Box } from "@mui/material";
 
 export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
-    let damage_multipliers: { name: string, multiplier: number }[] = allTypes.map(typeName => {
+    let damage_multipliers: { name: PokemonTypeName, multiplier: number }[] = allTypes.map(typeName => {
         return { name: typeName, multiplier: 1 }
     })
 
-    let double_damage_from: string[] = []
-    let half_damage_from: string[] = []
-    let no_damage_from: string[] = []
+    let double_damage_from: PokemonTypeName[] = []
+    let half_damage_from: PokemonTypeName[] = []
+    let no_damage_from: PokemonTypeName[] = []
 
     pokemonTypes
         .map((pokemonType: PokemonType) => {
-                pokemonType.damage_relations.double_damage_from.map((type: { name: string }) =>
+                pokemonType.damage_relations.double_damage_from.map((type) =>
                     double_damage_from.push(type.name))
-                pokemonType.damage_relations.half_damage_from.map((type: { name: string }) =>
+                pokemonType.damage_relations.half_damage_from.map((type) =>
                     half_damage_from.push(type.name))
-                pokemonType.damage_relations.no_damage_from.map((type: { name: string }) =>
+                pokemonType.damage_relations.no_damage_from.map((type) =>
                     no_damage_from.push(type.name))
             }
         )
@@ -31,7 +31,10 @@ export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
     )
 
     return (
-        <Flex gridGap={6} mt={4}>
+        <Box sx={{
+            display: 'flex',
+            flexDirection: "row"
+        }}>
             <TypeStack
                 types={ damage_multipliers.filter(type => type.multiplier >= 2) }
                 text={ "Weak" }/>
@@ -41,6 +44,6 @@ export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
             <TypeStack
                 types={ damage_multipliers.filter(type => type.multiplier === 0) }
                 text={ "Immune" }/>
-        </Flex>
+        </Box>
     )
 }
