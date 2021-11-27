@@ -6,7 +6,7 @@ export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonTy
         <div style={ {
             display: "flex",
             marginTop: "0.5em",
-            gap: "0.5em"
+            gap: "1em"
         } }>
             {
                 pokemonTypes

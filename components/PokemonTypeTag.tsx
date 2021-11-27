@@ -1,7 +1,9 @@
-import { capitalize, Chip, useMediaQuery } from "@mui/material";
+import { capitalize, Chip, TextField, useMediaQuery, withStyles } from "@mui/material";
 import { PokemonTypeName } from "../util/PokemonTypeNames";
 import { pokemonTypeColors } from "../util/PokemonTypeColors";
-import { ColorMagic } from "../util/colorMagic";
+import { normalizeColor } from "../util/NormalizeColor";
+
+
 
 export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTypeName }) {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -29,14 +31,14 @@ export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTy
             label={ capitalize(pokemonTypeName) }
             sx={
                 {
-                    backgroundColor: `${ ColorMagic(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation, backgroundColor.opacity) }`,
+                    backgroundColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation, backgroundColor.opacity) }`,
                     width: "6em",
                     height: "2.7em",
                     fontSize: "1rem",
-                    color: `${ ColorMagic(pokemonTypeColors[pokemonTypeName], color.value, color.saturation, color.opacity) }`,
+                    color: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], color.value, color.saturation, color.opacity) }`,
                     borderRadius: "0.6em",
                     border: 1,
-                    borderColor: `${ ColorMagic(pokemonTypeColors[pokemonTypeName], borderColor.value, borderColor.saturation, borderColor.opacity) }`
+                    borderColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], borderColor.value, borderColor.saturation, borderColor.opacity) }`
                 }
             }
         />

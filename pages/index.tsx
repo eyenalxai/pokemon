@@ -3,10 +3,14 @@ import { PokemonType } from "../types/PokemonType";
 import { SWRResponse } from "swr";
 import { usePokemonTypes } from "../util/UsePokemonTypes";
 import React, { useState } from "react";
-import { Autocomplete, Box, CircularProgress, Container, TextField } from "@mui/material";
+
+import { Autocomplete, Box, CircularProgress, Container, styled, TextField, withStyles } from "@mui/material";
 import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
 import { TypeColumns } from "../components/TypeColumns";
 import { pokemonNames } from "../util/PokemonNames";
+import { AutocompleteStyled } from "../components/AutocompleteStyled";
+
+
 
 function Home() {
     const [pokemonOption, setPokemonOption] = useState<PokemonOption>(pokemonNames[Math.floor(Math.random() * pokemonNames.length)]);
@@ -19,12 +23,12 @@ function Home() {
             justifyContent: "center",
             marginBottom: "4em"
         } }>
-            <Autocomplete
+            <AutocompleteStyled
                 disablePortal
                 disableClearable
                 id="combo-box-demo"
                 defaultValue={ pokemonOption }
-                onChange={ (event, values) => setPokemonOption(values) }
+                onChange={ (event, values) => setPokemonOption(values as PokemonOption) }
                 options={ pokemonNames }
                 renderInput={ (params) => <TextField { ...params } key={ params.id } label="Pokémon"/> }
                 sx={ {
