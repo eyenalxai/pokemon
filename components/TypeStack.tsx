@@ -8,11 +8,11 @@ export function TypeStack({ types, text }: { types: { name: PokemonTypeName, mul
     return (
         <Box sx={{
             display: 'flex',
-            flexDirection: "column"
+            flexDirection: "column",
+            gap: "0.5em"
         }}>
             <Box sx={{
                 textAlign: 'center',
-                marginTop: "2em"
             }}>{ text }</Box>
             { types
                 .sort((a, b) => a.multiplier < b.multiplier ? -1 : (a.multiplier > b.multiplier ? 1 : 0))

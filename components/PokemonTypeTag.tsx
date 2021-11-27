@@ -15,8 +15,8 @@ export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTy
                     fontSize: "1rem",
                     color:`${pokemonTypeColors[pokemonTypeName][prefersDarkMode ? 400 : 700]}`,
                     borderRadius: "0.6em",
-                    marginRight: "1em",
-                    marginTop: "0.5em"
+                    border: 1,
+                    borderColor: `${pokemonTypeColors[pokemonTypeName][700]}88`
                 }
             }
         />

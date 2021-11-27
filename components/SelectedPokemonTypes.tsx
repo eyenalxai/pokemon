@@ -4,11 +4,11 @@ import { pokemonTypeColors } from "../util/Theme";
 import { PokemonTypeTag } from "./PokemonTypeTag";
 
 export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
-
-
     return (
         <div style={{
-            display: "flex"
+            display: "flex",
+            marginTop: "0.5em",
+            gap: "0.5em"
         }}>
             {
                 pokemonTypes
@@ -19,5 +19,4 @@ export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonTy
             }
         </div>
     )
-
 }

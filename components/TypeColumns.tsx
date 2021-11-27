@@ -33,7 +33,10 @@ export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
     return (
         <Box sx={{
             display: 'flex',
-            flexDirection: "row"
+            marginTop: "2em",
+            flexDirection: "row",
+            alignContent: "flex-start",
+            gap: "1em"
         }}>
             <TypeStack
                 types={ damage_multipliers.filter(type => type.multiplier >= 2) }
