@@ -1,4 +1,4 @@
-import { Center, Container, Spinner } from "@chakra-ui/react";
+import { Center, Container, FormLabel, Spinner } from "@chakra-ui/react";
 import { PokemonOption } from "../types/PokemonOption";
 import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
 import { PokemonType } from "../types/PokemonType";
@@ -16,6 +16,7 @@ function Home() {
 
     return (
         <Container mt={ 12 } maxWidth={ "xs" }>
+            <FormLabel fontSize={"xs"} ml={1} mb={0} textColor={"gray.500"}>Select Pokémon</FormLabel>
             <Select options={ allPokemonNames }
                     onChange={ (x: PokemonOption) => setPokemonOption(x as PokemonOption) }
                     defaultValue={ pokemonOption }
