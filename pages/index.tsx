@@ -16,8 +16,8 @@ function Home() {
 
     return (
         <Container mt={ 12 } maxWidth={ "xs" }>
-            <FormLabel fontSize={"xs"} ml={1} mb={0} textColor={"gray.500"}>Select Pokémon</FormLabel>
             <Select options={ allPokemonNames }
+                    aria-label={"Select Pokémon"}
                     onChange={ (x: PokemonOption) => setPokemonOption(x as PokemonOption) }
                     defaultValue={ pokemonOption }
             />
