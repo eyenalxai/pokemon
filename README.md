@@ -1,4 +1,4 @@
-### Quckly check type and weaknesses of pokemon
+### Quckly check type and weaknesses of Pokémon
 
 [pokemon.takx.xyz](https://pokemon.takx.xyz)
 

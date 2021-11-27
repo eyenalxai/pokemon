@@ -1,5 +1,5 @@
 import { PokemonType } from "../types/PokemonType";
-import { pokemonTypeNames, PokemonTypeName } from "../util/PokemonTypeNames";
+import { PokemonTypeName, pokemonTypeNames } from "../util/PokemonTypeNames";
 import { TypeStack } from "./TypeStack";
 import { Box } from "@mui/material";
 
