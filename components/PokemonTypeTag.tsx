@@ -9,19 +9,19 @@ export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTy
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     const backgroundColor = {
-        value: prefersDarkMode ? 1 : 1,
-        saturation: prefersDarkMode ? 0.7 : 0.7,
-        opacity: prefersDarkMode ? 50 : 50
+        value: prefersDarkMode ? 0.5 : 1,
+        saturation: prefersDarkMode ? 0.5 : 0.7,
+        opacity: prefersDarkMode ? 77 : 50
     }
 
     const color = {
         value: prefersDarkMode ? 0.95 : 0.5,
         saturation: prefersDarkMode ? 0.5 : 0.5,
-        opacity: prefersDarkMode ? 244 : 200
+        opacity: prefersDarkMode ? 250 : 200
     }
 
     const borderColor = {
-        value: prefersDarkMode ? 0.95 : 0.5,
+        value: prefersDarkMode ? 0.5 : 0.5,
         saturation: prefersDarkMode ? 0.5 : 0.5,
         opacity: prefersDarkMode ? 100 : 100
     }
