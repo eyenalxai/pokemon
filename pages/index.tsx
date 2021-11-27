@@ -1,15 +1,15 @@
 import { PokemonOption } from "../types/PokemonOption";
 import { PokemonType } from "../types/PokemonType";
-import { allPokemonNames } from "../util/AllPokemonNames";
 import { SWRResponse } from "swr";
 import { usePokemonTypes } from "../util/UsePokemonTypes";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Autocomplete, Box, CircularProgress, Container, TextField } from "@mui/material";
 import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
 import { TypeColumns } from "../components/TypeColumns";
+import { pokemonNames } from "../util/PokemonNames";
 
 function Home() {
-    const [pokemonOption, setPokemonOption] = useState<PokemonOption>(allPokemonNames[Math.floor(Math.random() * allPokemonNames.length)]);
+    const [pokemonOption, setPokemonOption] = useState<PokemonOption>(pokemonNames[Math.floor(Math.random() * pokemonNames.length)]);
 
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = usePokemonTypes(pokemonOption)
 
@@ -25,7 +25,7 @@ function Home() {
                 id="combo-box-demo"
                 defaultValue={ pokemonOption }
                 onChange={ (event, values) => setPokemonOption(values) }
-                options={ allPokemonNames }
+                options={ pokemonNames }
                 renderInput={ (params) => <TextField { ...params } key={ params.id } label="Pokémon"/> }
                 sx={ {
                     marginTop: "4em",

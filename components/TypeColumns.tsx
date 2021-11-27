@@ -1,10 +1,10 @@
 import { PokemonType } from "../types/PokemonType";
-import { allTypes, PokemonTypeName } from "../util/AllTypes";
+import { pokemonTypeNames, PokemonTypeName } from "../util/PokemonTypeNames";
 import { TypeStack } from "./TypeStack";
 import { Box } from "@mui/material";
 
 export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
-    let damage_multipliers: { name: PokemonTypeName, multiplier: number }[] = allTypes.map(typeName => {
+    let damage_multipliers: { name: PokemonTypeName, multiplier: number }[] = pokemonTypeNames.map(typeName => {
         return { name: typeName, multiplier: 1 }
     })
 

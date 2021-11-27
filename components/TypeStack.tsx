@@ -1,5 +1,5 @@
 import { PokemonTypeTag } from "./PokemonTypeTag";
-import { PokemonTypeName } from "../util/AllTypes";
+import { PokemonTypeName } from "../util/PokemonTypeNames";
 import { Box } from "@mui/material";
 
 export function TypeStack({ types, text }: { types: { name: PokemonTypeName, multiplier: number }[], text: string }) {

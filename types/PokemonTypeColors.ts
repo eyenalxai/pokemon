@@ -1,22 +1,20 @@
-import { ColorPalette } from "./ColorPalette";
-
 export interface PokemonTypeColors {
-    normal: ColorPalette;
-    steel: ColorPalette;
-    poison: ColorPalette;
-    electric: ColorPalette;
-    ice: ColorPalette;
-    fighting: ColorPalette;
-    dragon: ColorPalette;
-    water: ColorPalette;
-    rock: ColorPalette;
-    ghost: ColorPalette;
-    bug: ColorPalette;
-    grass: ColorPalette;
-    flying: ColorPalette;
-    dark: ColorPalette;
-    fire: ColorPalette;
-    ground: ColorPalette;
-    psychic: ColorPalette;
-    fairy: ColorPalette
+    normal: string;
+    steel: string;
+    poison: string;
+    electric: string;
+    ice: string;
+    fighting: string;
+    dragon: string;
+    water: string;
+    rock: string;
+    ghost: string;
+    bug: string;
+    grass: string;
+    flying: string;
+    dark: string;
+    fire: string;
+    ground: string;
+    psychic: string;
+    fairy: string
 }

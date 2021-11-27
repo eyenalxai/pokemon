@@ -1,6 +1,6 @@
 import { PokemonOption } from "../types/PokemonOption";
 
-export const allPokemonNames: PokemonOption[] = [
+export const pokemonNames: PokemonOption[] = [
     {
         value: "abomasnow",
         label: "Abomasnow"
