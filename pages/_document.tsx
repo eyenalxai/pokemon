@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
                     />
                     <meta name="msapplication-TileColor" content="#da532c"/>
                     <meta name="theme-color" content="#FFF" media="(prefers-color-scheme: light)"/>
-                    <meta name="theme-color" content="#1B202B" media="(prefers-color-scheme: dark)"/>
+                    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)"/>
                     <meta name="description" content="Pokemon types and weaknesses checker."/>
                 </Head>
                 <body>
