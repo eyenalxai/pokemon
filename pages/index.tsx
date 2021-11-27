@@ -16,7 +16,8 @@ function Home() {
     return (
         <Container maxWidth={ "xs" } sx={ {
             display: "grid",
-            justifyContent: "center"
+            justifyContent: "center",
+            marginBottom: "4em"
         } }>
             <Autocomplete
                 disablePortal
