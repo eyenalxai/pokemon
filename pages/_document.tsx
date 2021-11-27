@@ -13,8 +13,6 @@ export default class MyDocument extends Document {
                     <link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#D1D5DB"/>
                     <link rel="shortcut icon" href="/favicon.ico?v=2"/>
                     <meta name="msapplication-TileColor" content="#da532c"/>
-                    <meta name="theme-color" content="#F3F4F6" media="(prefers-color-scheme: light)"/>
-                    <meta name="theme-color" content="#1F2937" media="(prefers-color-scheme: dark)"/>
                     <meta name="description" content="Pokemon types and weaknesses checker."/>
                 </Head>
                 <Main/>
