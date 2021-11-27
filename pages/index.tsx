@@ -14,10 +14,10 @@ function Home() {
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = usePokemonTypes(pokemonOption)
 
     return (
-        <Container maxWidth={"xs"} sx={{
+        <Container maxWidth={ "xs" } sx={ {
             display: "grid",
             justifyContent: "center"
-        }}>
+        } }>
             <Autocomplete
                 disablePortal
                 disableClearable
@@ -26,15 +26,15 @@ function Home() {
                 onChange={ (event, values) => setPokemonOption(values) }
                 options={ allPokemonNames }
                 renderInput={ (params) => <TextField { ...params } key={ params.id } label="Pokémon"/> }
-                sx={{
+                sx={ {
                     marginTop: "4em",
                     width: "20em"
-                }}
+                } }
             />
             { pokemonTypes
                 ? <>
                     <SelectedPokemonTypes pokemonTypes={ pokemonTypes }/>
-                    <TypeColumns pokemonTypes={pokemonTypes}/>
+                    <TypeColumns pokemonTypes={ pokemonTypes }/>
                 </>
                 : <Box sx={ {
                     display: 'flex',

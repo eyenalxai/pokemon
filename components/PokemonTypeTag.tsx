@@ -6,17 +6,17 @@ export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTy
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
     return (
         <Chip
-            label={capitalize(pokemonTypeName)}
+            label={ capitalize(pokemonTypeName) }
             sx={
                 {
-                    backgroundColor: `${pokemonTypeColors[pokemonTypeName][prefersDarkMode ? 700 : 300]}${prefersDarkMode ? 50 : 87}`,
+                    backgroundColor: `${ pokemonTypeColors[pokemonTypeName][prefersDarkMode ? 700 : 300] }${ prefersDarkMode ? 50 : 87 }`,
                     width: "6em",
                     height: "2.7em",
                     fontSize: "1rem",
-                    color:`${pokemonTypeColors[pokemonTypeName][prefersDarkMode ? 400 : 700]}`,
+                    color: `${ pokemonTypeColors[pokemonTypeName][prefersDarkMode ? 400 : 700] }`,
                     borderRadius: "0.6em",
                     border: 1,
-                    borderColor: `${pokemonTypeColors[pokemonTypeName][700]}88`
+                    borderColor: `${ pokemonTypeColors[pokemonTypeName][700] }88`
                 }
             }
         />

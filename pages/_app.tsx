@@ -19,12 +19,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     )
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={ theme }>
             <Head>
                 <title>Pokemon Helper</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </Head>
-            <CssBaseline />
+            <CssBaseline/>
             <Component { ...pageProps } />
         </ThemeProvider>
     )
