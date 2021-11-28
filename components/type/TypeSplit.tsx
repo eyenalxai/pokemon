@@ -1,7 +1,8 @@
 import { PokemonType } from "../../type/PokemonType"
-import { PokemonTypeName, pokemonTypeNames } from "../../util/PokemonTypeNames"
+import { pokemonTypeNames } from "../../util/PokemonTypeNames"
 import { TypeColumn } from "./TypeColumn"
 import { Box } from "@mui/material"
+import { PokemonTypeName } from "../../type/PokemonTypeName"
 
 export function TypeSplit({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
     let damage_multipliers: { name: PokemonTypeName; multiplier: number }[] = pokemonTypeNames.map((typeName) => {

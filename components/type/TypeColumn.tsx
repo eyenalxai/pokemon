@@ -1,6 +1,6 @@
 import { TypeChip } from "./TypeChip"
-import { PokemonTypeName } from "../../util/PokemonTypeNames"
 import { Box } from "@mui/material"
+import { PokemonTypeName } from "../../type/PokemonTypeName"
 
 export function TypeColumn({ types, text }: { types: { name: PokemonTypeName; multiplier: number }[]; text: string }) {
     if (types.length === 0) return null

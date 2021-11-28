@@ -1,9 +1,9 @@
 import { Button, capitalize, useMediaQuery } from "@mui/material"
-import { PokemonTypeName } from "../../util/PokemonTypeNames"
 import { pokemonTypeColors } from "../../util/PokemonTypeColors"
 import { normalizeColor } from "../../util/NormalizeColor"
 import { getColors } from "../../util/GetColors"
 import { defaultTypeStyle } from "../../util/DefaultTypeStyle"
+import { PokemonTypeName } from "../../type/PokemonTypeName"
 
 interface TypeChipProps {
     pokemonTypeName: PokemonTypeName

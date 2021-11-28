@@ -1,4 +1,4 @@
-import { PokemonTypeName } from "../util/PokemonTypeNames"
+import { PokemonTypeName } from "./PokemonTypeName"
 
 export interface DamageRelations {
     no_damage_to: { name: PokemonTypeName }[]

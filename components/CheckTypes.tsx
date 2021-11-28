@@ -1,6 +1,6 @@
 import { Box } from "@mui/material"
 import React, { useState } from "react"
-import { PokemonTypeName, pokemonTypeNames } from "../util/PokemonTypeNames"
+import { pokemonTypeNames } from "../util/PokemonTypeNames"
 import _ from "lodash"
 import { TypeButton } from "./type/TypeButton"
 import { TypeSplit } from "./type/TypeSplit"
@@ -9,6 +9,7 @@ import { pokemonTypeApiUrl } from "../config/URL"
 import { multiFetcher } from "../util/MultiFetcher"
 import { PokemonType } from "../type/PokemonType"
 import { Loading } from "./Loading"
+import { PokemonTypeName } from "../type/PokemonTypeName"
 
 export function CheckTypes() {
     const [types, setTypes] = useState<PokemonTypeName[]>([])

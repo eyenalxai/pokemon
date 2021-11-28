@@ -1,5 +1,5 @@
 import { DamageRelations } from "./DamageRelations"
-import { PokemonTypeName } from "../util/PokemonTypeNames"
+import { PokemonTypeName } from "./PokemonTypeName"
 
 export interface PokemonType {
     id: number
