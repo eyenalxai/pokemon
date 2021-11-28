@@ -24,6 +24,7 @@ export default function CheckPokemon() {
             <SelectAutocomplete
                 disablePortal
                 disableClearable
+                blurOnSelect={"touch"}
                 id="combo-box-demo"
                 defaultValue={pokemonOption}
                 onChange={(_, values) => setPokemonOption(values as PokemonOption)}

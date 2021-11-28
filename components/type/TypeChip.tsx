@@ -2,7 +2,7 @@ import { capitalize, Chip, useMediaQuery } from "@mui/material"
 import { PokemonTypeName } from "../../util/PokemonTypeNames"
 import { pokemonTypeColors } from "../../util/PokemonTypeColors"
 import { normalizeColor } from "../../util/NormalizeColor"
-import { useColors } from "../../util/UseColors"
+import { getColors } from "../../util/GetColors"
 import { defaultTypeStyle } from "../../util/DefaultTypeStyle"
 
 interface TypeChipProps {
@@ -10,7 +10,7 @@ interface TypeChipProps {
 }
 
 export function TypeChip({ pokemonTypeName }: TypeChipProps) {
-    const { backgroundColor, color, borderColor } = useColors(useMediaQuery("(prefers-color-scheme: dark)"))
+    const { backgroundColor, color, borderColor } = getColors(useMediaQuery("(prefers-color-scheme: dark)"))
 
     return (
         <Chip
