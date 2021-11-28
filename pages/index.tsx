@@ -4,12 +4,11 @@ import { SWRResponse } from "swr";
 import { usePokemonTypes } from "../util/UsePokemonTypes";
 import React, { useState } from "react";
 
-import { Autocomplete, Box, CircularProgress, Container, styled, TextField, withStyles } from "@mui/material";
+import { Box, CircularProgress, Container, TextField } from "@mui/material";
 import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
 import { TypeColumns } from "../components/TypeColumns";
 import { pokemonNames } from "../util/PokemonNames";
 import { AutocompleteStyled } from "../components/AutocompleteStyled";
-
 
 
 function Home() {

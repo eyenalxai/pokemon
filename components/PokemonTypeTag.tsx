@@ -1,8 +1,7 @@
-import { capitalize, Chip, TextField, useMediaQuery, withStyles } from "@mui/material";
+import { capitalize, Chip, useMediaQuery } from "@mui/material";
 import { PokemonTypeName } from "../util/PokemonTypeNames";
 import { pokemonTypeColors } from "../util/PokemonTypeColors";
 import { normalizeColor } from "../util/NormalizeColor";
-
 
 
 export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTypeName }) {
