@@ -1,4 +1,4 @@
-import { PokemonTypeColors } from "../types/PokemonTypeColors";
+import { PokemonTypeColors } from "../types/PokemonTypeColors"
 
 export const pokemonTypeColors: PokemonTypeColors = {
     normal: "#A8A878",
@@ -18,5 +18,5 @@ export const pokemonTypeColors: PokemonTypeColors = {
     dragon: "#7038F8",
     dark: "#705848",
     steel: "#B8B8D0",
-    fairy: "#EE99AC",
+    fairy: "#EE99AC"
 }

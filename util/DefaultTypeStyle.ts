@@ -1,5 +1,5 @@
-import { SxProps } from "@mui/system";
-import { Theme } from "@mui/material";
+import { SxProps } from "@mui/system"
+import { Theme } from "@mui/material"
 
 export const defaultTypeStyle: SxProps<Theme> = {
     width: "6em",
@@ -7,5 +7,5 @@ export const defaultTypeStyle: SxProps<Theme> = {
     fontSize: "1rem",
     borderRadius: "0.6em",
     border: 1,
-    textTransform: "none",
+    textTransform: "none"
 }

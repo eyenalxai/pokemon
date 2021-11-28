@@ -1,5 +1,5 @@
-import { fetcher } from "./Fetcher";
+import { fetcher } from "./Fetcher"
 
 export function multiFetcher(...urls: string[]) {
-    return Promise.all(urls.map(url => fetcher(url)))
+    return Promise.all(urls.map((url) => fetcher(url)))
 }

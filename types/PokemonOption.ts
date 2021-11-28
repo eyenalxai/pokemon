@@ -1,4 +1,4 @@
 export interface PokemonOption {
-    label: string,
+    label: string
     value: string
 }

@@ -1,5 +1,4 @@
 export function useColors(prefersDarkMode: boolean) {
-
     const backgroundColor = {
         value: prefersDarkMode ? 0.5 : 1,
         saturation: prefersDarkMode ? 0.5 : 0.7,
