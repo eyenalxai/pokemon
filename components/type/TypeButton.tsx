@@ -20,20 +20,20 @@ export function TypeButton({ pokemonTypeName, disabled, selected, onClick }: Typ
             onClick={onClick}
             sx={{
                 ...defaultTypeStyle,
-                cursor: disabled ? "default" : "pointer",
-                backgroundColor: `${normalizeColor(
+                "cursor": disabled ? "default" : "pointer",
+                "backgroundColor": `${normalizeColor(
                     pokemonTypeColors[pokemonTypeName],
                     backgroundColor.value,
                     backgroundColor.saturation / (!selected ? 5 : 1),
                     backgroundColor.opacity
                 )}`,
-                color: `${normalizeColor(
+                "color": `${normalizeColor(
                     pokemonTypeColors[pokemonTypeName],
                     color.value,
                     color.saturation / (!selected ? 4 : 1),
                     color.opacity
                 )}`,
-                borderColor: `${normalizeColor(
+                "borderColor": `${normalizeColor(
                     pokemonTypeColors[pokemonTypeName],
                     borderColor.value,
                     borderColor.saturation / (!selected ? 5 : 1),
