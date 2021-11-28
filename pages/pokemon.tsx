@@ -9,6 +9,7 @@ import { SelectAutocomplete } from "../components/SelectAutocomplete";
 import { SelectedPokemonTypes } from "../components/type/SelectedPokemonTypes";
 import { TypeSplit } from "../components/type/TypeSplit";
 import { MyContainer } from "components/MyContainer";
+import { BackButton } from "../components/type/BackButton";
 
 export default function CheckPokemon() {
     const [pokemonOption, setPokemonOption] = useState<PokemonOption>(pokemonNames[Math.floor(Math.random() * pokemonNames.length)]);
@@ -17,6 +18,7 @@ export default function CheckPokemon() {
 
     return (
         <MyContainer>
+            <BackButton/>
             <SelectAutocomplete
                 disablePortal
                 disableClearable
@@ -26,7 +28,7 @@ export default function CheckPokemon() {
                 options={ pokemonNames }
                 renderInput={ (params) => <TextField { ...params } key={ params.id } label="Pokémon"/> }
                 sx={ {
-                    marginTop: "4em",
+                    marginTop: "2em",
                     width: "20em"
                 } }
             />

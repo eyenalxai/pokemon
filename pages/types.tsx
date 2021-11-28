@@ -11,6 +11,8 @@ import { multiFetcher } from "../util/MultiFetcher";
 import { PokemonType } from "../types/PokemonType";
 import { SelectedPokemonTypes } from "../components/type/SelectedPokemonTypes";
 import { Loading } from "../components/type/Loading";
+import { LinkButton } from "../components/LinkButton";
+import { BackButton } from "../components/type/BackButton";
 
 export default function Types() {
 
@@ -34,11 +36,12 @@ export default function Types() {
 
     return (
         <MyContainer>
+            <BackButton/>
             <Box sx={ {
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "1em",
-                marginTop: "4em"
+                marginTop: "2em"
             } }>
                 {
                     pokemonTypeNames.sort().map((type, idx) => {
