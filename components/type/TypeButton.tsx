@@ -19,8 +19,8 @@ export function TypeButton({ pokemonTypeName, disabled, selected, onClick }: Typ
     return (
         <Button
             onClick={ onClick }
-            disabled={disabled}
             sx={ {
+                cursor: disabled ? "default" : "pointer",
                 backgroundColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation / (!selected ? 5 : 1), backgroundColor.opacity) }`,
                 width: "6em",
                 height: "2.7em",
@@ -31,7 +31,7 @@ export function TypeButton({ pokemonTypeName, disabled, selected, onClick }: Typ
                 textTransform: "none",
                 borderColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], borderColor.value, borderColor.saturation / (!selected ? 5 : 1), borderColor.opacity) }`,
                 ':hover': {
-                    bgcolor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation, backgroundColor.opacity) }`, // theme.palette.primary.main
+                    bgcolor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation / (disabled ? 5 : 1), backgroundColor.opacity) }`, // theme.palette.primary.main
                 },
             } }
         >{ capitalize(pokemonTypeName) }</Button>
