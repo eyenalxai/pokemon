@@ -4,12 +4,13 @@ import { pokemonNames } from "../util/PokemonNames"
 import { SWRResponse } from "swr"
 import { PokemonType } from "../types/PokemonType"
 import { usePokemonTypes } from "../util/UsePokemonTypes"
-import { Box, CircularProgress, TextField } from "@mui/material"
+import { TextField } from "@mui/material"
 import { SelectAutocomplete } from "../components/SelectAutocomplete"
 import { SelectedPokemonTypes } from "../components/type/SelectedPokemonTypes"
 import { TypeSplit } from "../components/type/TypeSplit"
-import { BackButton } from "../components/type/BackButton"
+import { BackButton } from "../components/BackButton"
 import { MyContainer } from "../components/MyContainer"
+import { Loading } from "../components/Loading"
 
 export default function CheckPokemon() {
     const [pokemonOption, setPokemonOption] = useState<PokemonOption>(
@@ -41,15 +42,7 @@ export default function CheckPokemon() {
                     <TypeSplit pokemonTypes={pokemonTypes} />
                 </>
             ) : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: "4em"
-                    }}
-                >
-                    <CircularProgress />
-                </Box>
+                <Loading />
             )}
         </MyContainer>
     )

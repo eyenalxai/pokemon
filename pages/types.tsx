@@ -9,8 +9,8 @@ import useSWR, { SWRResponse } from "swr"
 import { pokemonTypeApiUrl } from "../config/URL"
 import { multiFetcher } from "../util/MultiFetcher"
 import { PokemonType } from "../types/PokemonType"
-import { Loading } from "../components/type/Loading"
-import { BackButton } from "../components/type/BackButton"
+import { Loading } from "../components/Loading"
+import { BackButton } from "../components/BackButton"
 
 export default function Types() {
     const [types, setTypes] = useState<PokemonTypeName[]>([])
