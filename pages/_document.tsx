@@ -16,11 +16,6 @@ export default class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                     />
                     <meta name="msapplication-TileColor" content="#da532c" />
-                    <script
-                        defer
-                        src="https://static.cloudflareinsights.com/beacon.min.js"
-                        data-cf-beacon='{"token": "4a970aa6cedc481bbc39f97efc9ea1ac"}'
-                    />
                     <meta name="theme-color" content="#FFF" media="(prefers-color-scheme: light)" />
                     <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
                     <meta name="description" content="Pokemon types and weaknesses checker." />
