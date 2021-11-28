@@ -1,9 +1,10 @@
 import { PokemonType } from "../types/PokemonType";
 import { PokemonTypeTag } from "./PokemonTypeTag";
+import { Box } from "@mui/material";
 
 export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
     return (
-        <div style={ {
+        <Box sx={ {
             display: "flex",
             marginTop: "0.5em",
             gap: "1em"
@@ -15,6 +16,6 @@ export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonTy
                         return <PokemonTypeTag key={ idx } pokemonTypeName={ pokemonType.name }/>
                     })
             }
-        </div>
+        </Box>
     )
 }

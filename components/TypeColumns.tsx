@@ -33,7 +33,7 @@ export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
     return (
         <Box sx={ {
             display: 'flex',
-            marginTop: "2em",
+            marginTop: "1em",
             flexDirection: "row",
             alignContent: "flex-start",
             gap: "1em"
