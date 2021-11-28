@@ -1,55 +1,20 @@
-import { PokemonOption } from "../types/PokemonOption";
-import { PokemonType } from "../types/PokemonType";
-import { SWRResponse } from "swr";
-import { usePokemonTypes } from "../util/UsePokemonTypes";
-import React, { useState } from "react";
+import React from "react";
+import { Box, Button, Link } from "@mui/material";
+import { MyContainer } from "../components/MyContainer";
+import { LinkButton } from "../components/LinkButton";
 
-import { Box, CircularProgress, Container, TextField } from "@mui/material";
-import { SelectedPokemonTypes } from "../components/SelectedPokemonTypes";
-import { TypeColumns } from "../components/TypeColumns";
-import { pokemonNames } from "../util/PokemonNames";
-import { AutocompleteStyled } from "../components/AutocompleteStyled";
-
-
-function Home() {
-    const [pokemonOption, setPokemonOption] = useState<PokemonOption>(pokemonNames[Math.floor(Math.random() * pokemonNames.length)]);
-
-    const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = usePokemonTypes(pokemonOption)
-
+export default function Home() {
     return (
-        <Container maxWidth={ "xs" } sx={ {
-            display: "grid",
-            justifyContent: "center",
-            marginBottom: "4em"
-        } }>
-            <AutocompleteStyled
-                disablePortal
-                disableClearable
-                id="combo-box-demo"
-                defaultValue={ pokemonOption }
-                onChange={ (event, values) => setPokemonOption(values as PokemonOption) }
-                options={ pokemonNames }
-                renderInput={ (params) => <TextField { ...params } key={ params.id } label="Pokémon"/> }
-                sx={ {
-                    marginTop: "4em",
-                    width: "20em"
-                } }
-            />
-            { pokemonTypes
-                ? <>
-                    <SelectedPokemonTypes pokemonTypes={ pokemonTypes }/>
-                    <TypeColumns pokemonTypes={ pokemonTypes }/>
-                </>
-                : <Box sx={ {
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginTop: "4em"
-                } }>
-                    <CircularProgress/>
-                </Box>
-            }
-        </Container>
+        <MyContainer>
+            <Box sx={ {
+                marginTop: "6em",
+                display: "flex",
+                flexDirection: "row",
+                gap: "1em"
+            } }>
+                <LinkButton href={"pokemon"} text={"Pokémon"}/>
+                <LinkButton href={"types"} text={"Types"}/>
+            </Box>
+        </MyContainer>
     )
 }
-
-export default Home

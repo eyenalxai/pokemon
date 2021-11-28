@@ -1,10 +1,14 @@
 import { capitalize, Chip, useMediaQuery } from "@mui/material";
-import { PokemonTypeName } from "../util/PokemonTypeNames";
-import { pokemonTypeColors } from "../util/PokemonTypeColors";
-import { normalizeColor } from "../util/NormalizeColor";
+import { PokemonTypeName } from "../../util/PokemonTypeNames";
+import { pokemonTypeColors } from "../../util/PokemonTypeColors";
+import { normalizeColor } from "../../util/NormalizeColor";
 
+interface TypeChipProps {
+    pokemonTypeName: PokemonTypeName
+    notSelected?: boolean
+}
 
-export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTypeName }) {
+export function TypeChip({ pokemonTypeName, notSelected }: TypeChipProps) {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     const backgroundColor = {
@@ -30,14 +34,14 @@ export function PokemonTypeTag({ pokemonTypeName }: { pokemonTypeName: PokemonTy
             label={ capitalize(pokemonTypeName) }
             sx={
                 {
-                    backgroundColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation, backgroundColor.opacity) }`,
+                    backgroundColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation / (notSelected ? 3 : 1), backgroundColor.opacity) }`,
                     width: "6em",
                     height: "2.7em",
                     fontSize: "1rem",
-                    color: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], color.value, color.saturation, color.opacity) }`,
+                    color: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], color.value, color.saturation/ (notSelected ? 3 : 1), color.opacity) }`,
                     borderRadius: "0.6em",
                     border: 1,
-                    borderColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], borderColor.value, borderColor.saturation, borderColor.opacity) }`
+                    borderColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], borderColor.value, borderColor.saturation/ (notSelected ? 3 : 1), borderColor.opacity) }`
                 }
             }
         />

@@ -1,9 +1,9 @@
-import { PokemonType } from "../types/PokemonType";
-import { PokemonTypeName, pokemonTypeNames } from "../util/PokemonTypeNames";
-import { TypeStack } from "./TypeStack";
+import { PokemonType } from "../../types/PokemonType";
+import { PokemonTypeName, pokemonTypeNames } from "../../util/PokemonTypeNames";
+import { TypeColumn } from "./TypeColumn";
 import { Box } from "@mui/material";
 
-export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
+export function TypeSplit({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
     let damage_multipliers: { name: PokemonTypeName, multiplier: number }[] = pokemonTypeNames.map(typeName => {
         return { name: typeName, multiplier: 1 }
     })
@@ -38,13 +38,13 @@ export function TypeColumns({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
             alignContent: "flex-start",
             gap: "1em"
         } }>
-            <TypeStack
+            <TypeColumn
                 types={ damage_multipliers.filter(type => type.multiplier >= 2) }
                 text={ "Weak" }/>
-            <TypeStack
+            <TypeColumn
                 types={ damage_multipliers.filter(type => type.multiplier <= 0.5 && type.multiplier !== 0) }
                 text={ "Resistant" }/>
-            <TypeStack
+            <TypeColumn
                 types={ damage_multipliers.filter(type => type.multiplier === 0) }
                 text={ "Immune" }/>
         </Box>

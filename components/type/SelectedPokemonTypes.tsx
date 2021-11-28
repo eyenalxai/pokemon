@@ -1,5 +1,5 @@
-import { PokemonType } from "../types/PokemonType";
-import { PokemonTypeTag } from "./PokemonTypeTag";
+import { PokemonType } from "../../types/PokemonType";
+import { TypeChip } from "./TypeChip";
 import { Box } from "@mui/material";
 
 export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonType[] }) {
@@ -13,7 +13,7 @@ export function SelectedPokemonTypes({ pokemonTypes }: { pokemonTypes: PokemonTy
                 pokemonTypes
                     .sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
                     .map((pokemonType: PokemonType, idx) => {
-                        return <PokemonTypeTag key={ idx } pokemonTypeName={ pokemonType.name }/>
+                        return <TypeChip key={ idx } pokemonTypeName={ pokemonType.name }/>
                     })
             }
         </Box>

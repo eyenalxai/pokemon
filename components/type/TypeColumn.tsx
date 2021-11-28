@@ -1,8 +1,8 @@
-import { PokemonTypeTag } from "./PokemonTypeTag";
-import { PokemonTypeName } from "../util/PokemonTypeNames";
+import { TypeChip } from "./TypeChip";
+import { PokemonTypeName } from "../../util/PokemonTypeNames";
 import { Box } from "@mui/material";
 
-export function TypeStack({ types, text }: { types: { name: PokemonTypeName, multiplier: number }[], text: string }) {
+export function TypeColumn({ types, text }: { types: { name: PokemonTypeName, multiplier: number }[], text: string }) {
     if (types.length === 0) return null
 
     return (
@@ -17,7 +17,7 @@ export function TypeStack({ types, text }: { types: { name: PokemonTypeName, mul
             { types
                 .sort((a, b) => a.multiplier < b.multiplier ? -1 : (a.multiplier > b.multiplier ? 1 : 0))
                 .map((typeName: { name: PokemonTypeName; multiplier: number }, idx) => {
-                    return <PokemonTypeTag key={ idx } pokemonTypeName={ typeName.name }/>
+                    return <TypeChip key={ idx } pokemonTypeName={ typeName.name }/>
                 }) }
         </Box>
     )
