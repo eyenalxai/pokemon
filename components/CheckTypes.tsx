@@ -1,18 +1,16 @@
-import { MyContainer } from "../components/MyContainer"
 import { Box } from "@mui/material"
 import React, { useState } from "react"
 import { PokemonTypeName, pokemonTypeNames } from "../util/PokemonTypeNames"
 import _ from "lodash"
-import { TypeButton } from "../components/type/TypeButton"
-import { TypeSplit } from "../components/type/TypeSplit"
+import { TypeButton } from "./type/TypeButton"
+import { TypeSplit } from "./type/TypeSplit"
 import useSWR, { SWRResponse } from "swr"
 import { pokemonTypeApiUrl } from "../config/URL"
 import { multiFetcher } from "../util/MultiFetcher"
-import { PokemonType } from "../types/PokemonType"
-import { Loading } from "../components/Loading"
-import { BackButton } from "../components/BackButton"
+import { PokemonType } from "../type/PokemonType"
+import { Loading } from "./Loading"
 
-export default function Types() {
+export function CheckTypes() {
     const [types, setTypes] = useState<PokemonTypeName[]>([])
 
     function handleSelect(type: PokemonTypeName) {
@@ -27,13 +25,11 @@ export default function Types() {
 
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = useSWR(
         types.map((pokemonType) => `${pokemonTypeApiUrl}/${pokemonType}`),
-
         multiFetcher
     )
 
     return (
-        <MyContainer>
-            <BackButton />
+        <>
             <Box
                 sx={{
                     display: "grid",
@@ -57,6 +53,6 @@ export default function Types() {
                 })}
             </Box>
             {pokemonTypes ? <TypeSplit pokemonTypes={pokemonTypes} /> : types.length > 0 ? <Loading /> : null}
-        </MyContainer>
+        </>
     )
 }

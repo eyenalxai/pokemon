@@ -1,4 +1,4 @@
-import { PokemonType } from "../../types/PokemonType"
+import { PokemonType } from "../../type/PokemonType"
 import { PokemonTypeName, pokemonTypeNames } from "../../util/PokemonTypeNames"
 import { TypeColumn } from "./TypeColumn"
 import { Box } from "@mui/material"

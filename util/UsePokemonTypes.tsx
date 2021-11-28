@@ -1,9 +1,9 @@
-import { Pokemon } from "../types/Pokemon"
+import { Pokemon } from "../type/Pokemon"
 import useSWR, { SWRResponse } from "swr"
-import { PokemonType } from "../types/PokemonType"
+import { PokemonType } from "../type/PokemonType"
 import { pokemonApiUrl, pokemonTypeApiUrl } from "../config/URL"
 import { multiFetcher } from "./MultiFetcher"
-import { PokemonOption } from "../types/PokemonOption"
+import { PokemonOption } from "../type/PokemonOption"
 import { fetcher } from "./Fetcher"
 
 export function usePokemonTypes(pokemonOption: PokemonOption): SWRResponse<PokemonType[], Error> {

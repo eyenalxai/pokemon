@@ -1,4 +1,4 @@
-import { PokemonTypeColors } from "../types/PokemonTypeColors"
+import { PokemonTypeColors } from "../type/PokemonTypeColors"
 
 export const pokemonTypeColors: PokemonTypeColors = {
     normal: "#A8A878",

@@ -1,4 +1,4 @@
-import { PokemonOption } from "../types/PokemonOption"
+import { PokemonOption } from "../type/PokemonOption"
 
 export const pokemonNames: PokemonOption[] = [
     {

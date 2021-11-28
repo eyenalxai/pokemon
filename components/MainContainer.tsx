@@ -1,7 +1,7 @@
 import { Container } from "@mui/material"
 import React from "react"
 
-export function MyContainer({ children }: { children: React.ReactNode }) {
+export function MainContainer({ children }: { children: React.ReactNode }) {
     return (
         <Container
             maxWidth={"xs"}
