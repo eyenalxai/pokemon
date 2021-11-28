@@ -3,6 +3,7 @@ import { PokemonTypeName } from "../../util/PokemonTypeNames";
 import { pokemonTypeColors } from "../../util/PokemonTypeColors";
 import { normalizeColor } from "../../util/NormalizeColor";
 import { useColors } from "../../util/UseColors";
+import { defaultTypeStyle } from "../../util/DefaultTypeStyle";
 
 
 interface TypeChipProps {
@@ -20,15 +21,10 @@ export function TypeButton({ pokemonTypeName, disabled, selected, onClick }: Typ
         <Button
             onClick={ onClick }
             sx={ {
+                ...defaultTypeStyle,
                 cursor: disabled ? "default" : "pointer",
                 backgroundColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation / (!selected ? 5 : 1), backgroundColor.opacity) }`,
-                width: "6em",
-                height: "2.7em",
-                fontSize: "1rem",
                 color: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], color.value, color.saturation / (!selected ? 4 : 1), color.opacity) }`,
-                borderRadius: "0.6em",
-                border: 1,
-                textTransform: "none",
                 borderColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], borderColor.value, borderColor.saturation / (!selected ? 5 : 1), borderColor.opacity) }`,
                 ':hover': {
                     backgroundColor: `${ normalizeColor(pokemonTypeColors[pokemonTypeName], backgroundColor.value, backgroundColor.saturation / (disabled ? 5 : 1), backgroundColor.opacity) }`, // theme.palette.primary.main
