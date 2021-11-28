@@ -7,5 +7,6 @@ export const defaultTypeStyle: SxProps<Theme> = {
     fontSize: "1rem",
     borderRadius: "0.6em",
     border: 1,
+    fontWeight: "400",
     textTransform: "none"
 }
