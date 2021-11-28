@@ -4,6 +4,7 @@ import { MainContainer } from "../components/MainContainer"
 import { TabContext, TabList, TabPanel } from "@mui/lab"
 import { CheckPokemon } from "../components/CheckPokemon"
 import { CheckTypes } from "../components/CheckTypes"
+import { useRouter } from "next/router"
 
 interface HomeProps {
     query: HomeQuery
@@ -12,7 +13,13 @@ interface HomeProps {
 type HomeQuery = "pokemon" | "types"
 
 export default function Home({ query }: HomeProps) {
+    const router = useRouter()
     const [value, setValue] = React.useState<HomeQuery>(query)
+
+    function handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>, href: HomeQuery) {
+        e.preventDefault()
+        router.replace(href)
+    }
 
     return (
         <MainContainer>
@@ -22,6 +29,7 @@ export default function Home({ query }: HomeProps) {
                         <Tab
                             label="Pokémon"
                             value="pokemon"
+                            onClick={(e) => handleClick(e, "pokemon")}
                             sx={{
                                 textTransform: "none"
                             }}
@@ -29,6 +37,7 @@ export default function Home({ query }: HomeProps) {
                         <Tab
                             label="Types"
                             value="types"
+                            onClick={(e) => handleClick(e, "types")}
                             sx={{
                                 textTransform: "none"
                             }}
@@ -46,8 +55,6 @@ export default function Home({ query }: HomeProps) {
     )
 }
 
-export const getServerSideProps = async (context: { query: { main: string[] } }) => {
-    if (context.query.main.length != 1) return { props: { query: "pokemon" } }
-    if (context.query.main[0] != "pokemon" && context.query.main[0] != "types") return { props: { query: "pokemon" } }
-    return { props: { query: context.query.main[0] as HomeQuery } }
+export const getServerSideProps = async (context: { query: { main: HomeQuery } }) => {
+    return { props: { query: context.query.main[0] } }
 }
