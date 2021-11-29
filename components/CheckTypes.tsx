@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import React, { useState } from "react"
+import React from "react"
 import { pokemonTypeNames } from "../util/PokemonTypeNames"
 import { TypeButton } from "./type/TypeButton"
 import { TypeSplit } from "./type/TypeSplit"
@@ -11,9 +11,16 @@ import { Loading } from "./Loading"
 import { PokemonTypeName } from "../type/PokemonTypeName"
 import { isTypeClickable } from "../util/IsTypeClickable"
 import _ from "lodash"
+import { atom, useRecoilValue, useSetRecoilState } from "recoil"
+
+const pokemonTypesState = atom({
+    key: "pokemonTypesState",
+    default: [] as PokemonTypeName[]
+})
 
 export function CheckTypes() {
-    const [types, setTypes] = useState<PokemonTypeName[]>([])
+    const types = useRecoilValue(pokemonTypesState)
+    const setTypes = useSetRecoilState(pokemonTypesState)
 
     function handleSelect(type: PokemonTypeName) {
         if (isTypeClickable(type, types)) {
@@ -22,35 +29,35 @@ export function CheckTypes() {
     }
 
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = useSWR(
-        types.map((pokemonType) => `${pokemonTypeApiUrl}/${pokemonType}`),
+        types.map((pokemonType) => `${ pokemonTypeApiUrl }/${ pokemonType }`),
         multiFetcher
     )
 
     return (
         <>
             <Box
-                sx={{
+                sx={ {
                     display: "grid",
                     gridTemplateColumns: "repeat(3, 1fr)",
                     gap: "1em",
                     marginTop: "2em"
-                }}
+                } }
             >
-                {pokemonTypeNames.sort().map((type, idx) => {
+                { pokemonTypeNames.sort().map((type, idx) => {
                     return (
-                        <Box key={idx}>
+                        <Box key={ idx }>
                             <TypeButton
-                                key={idx}
-                                pokemonTypeName={type}
-                                disabled={!isTypeClickable(type, types)}
-                                selected={types.includes(type)}
-                                onClick={() => handleSelect(type)}
+                                key={ idx }
+                                pokemonTypeName={ type }
+                                disabled={ !isTypeClickable(type, types) }
+                                selected={ types.includes(type) }
+                                onClick={ () => handleSelect(type) }
                             />
                         </Box>
                     )
-                })}
+                }) }
             </Box>
-            {pokemonTypes ? <TypeSplit pokemonTypes={pokemonTypes} /> : types.length > 0 ? <Loading /> : null}
+            { pokemonTypes ? <TypeSplit pokemonTypes={ pokemonTypes } /> : types.length > 0 ? <Loading /> : null }
         </>
     )
 }
