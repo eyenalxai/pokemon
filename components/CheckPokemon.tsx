@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { PokemonOption } from "../type/PokemonOption"
 import { pokemonNames } from "../util/PokemonNames"
 import { SWRResponse } from "swr"
@@ -10,11 +10,12 @@ import { SelectedPokemonTypes } from "./type/SelectedPokemonTypes"
 import { TypeSplit } from "./type/TypeSplit"
 import { Loading } from "./Loading"
 
-export function CheckPokemon() {
-    const [pokemonOption, setPokemonOption] = useState<PokemonOption>(
-        pokemonNames[Math.floor(Math.random() * pokemonNames.length)]!
-    )
+interface CheckPokemonProps {
+    pokemonOption: PokemonOption
+    setPokemonOption: (PokemonOption: PokemonOption) => void
+}
 
+export function CheckPokemon({ pokemonOption, setPokemonOption }: CheckPokemonProps) {
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = usePokemonTypes(pokemonOption)
 
     return (

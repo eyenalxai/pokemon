@@ -1,7 +1,6 @@
 import { Box } from "@mui/material"
-import React, { useState } from "react"
+import React from "react"
 import { pokemonTypeNames } from "../util/PokemonTypeNames"
-import _ from "lodash"
 import { TypeButton } from "./type/TypeButton"
 import { TypeSplit } from "./type/TypeSplit"
 import useSWR, { SWRResponse } from "swr"
@@ -10,20 +9,14 @@ import { multiFetcher } from "../util/MultiFetcher"
 import { PokemonType } from "../type/PokemonType"
 import { Loading } from "./Loading"
 import { PokemonTypeName } from "../type/PokemonTypeName"
+import { isTypeClickable } from "../util/IsTypeClickable"
 
-export function CheckTypes() {
-    const [types, setTypes] = useState<PokemonTypeName[]>([])
+interface CheckTypesProps {
+    types: PokemonTypeName[]
+    handleSelect: (type: PokemonTypeName) => void
+}
 
-    function handleSelect(type: PokemonTypeName) {
-        if (isClickable(type)) {
-            setTypes(_.xor(types, [type]))
-        }
-    }
-
-    function isClickable(type: PokemonTypeName) {
-        return types.includes(type) || types.length < 2
-    }
-
+export function CheckTypes({ types, handleSelect }: CheckTypesProps) {
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = useSWR(
         types.map((pokemonType) => `${pokemonTypeApiUrl}/${pokemonType}`),
         multiFetcher
@@ -45,7 +38,7 @@ export function CheckTypes() {
                             <TypeButton
                                 key={idx}
                                 pokemonTypeName={type}
-                                disabled={!isClickable(type)}
+                                disabled={!isTypeClickable(type, types)}
                                 selected={types.includes(type)}
                                 onClick={() => handleSelect(type)}
                             />
