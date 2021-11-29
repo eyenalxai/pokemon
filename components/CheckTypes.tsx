@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import React from "react"
+import React, { useState } from "react"
 import { pokemonTypeNames } from "../util/PokemonTypeNames"
 import { TypeButton } from "./type/TypeButton"
 import { TypeSplit } from "./type/TypeSplit"
@@ -10,13 +10,17 @@ import { PokemonType } from "../type/PokemonType"
 import { Loading } from "./Loading"
 import { PokemonTypeName } from "../type/PokemonTypeName"
 import { isTypeClickable } from "../util/IsTypeClickable"
+import _ from "lodash"
 
-interface CheckTypesProps {
-    types: PokemonTypeName[]
-    handleSelect: (type: PokemonTypeName) => void
-}
+export function CheckTypes() {
+    const [types, setTypes] = useState<PokemonTypeName[]>([])
 
-export function CheckTypes({ types, handleSelect }: CheckTypesProps) {
+    function handleSelect(type: PokemonTypeName) {
+        if (isTypeClickable(type, types)) {
+            setTypes(_.xor(types, [type]))
+        }
+    }
+
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = useSWR(
         types.map((pokemonType) => `${pokemonTypeApiUrl}/${pokemonType}`),
         multiFetcher
