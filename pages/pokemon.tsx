@@ -1,29 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import { PokemonOption } from "../type/PokemonOption"
 import { pokemonNames } from "../util/PokemonNames"
 import { SWRResponse } from "swr"
 import { PokemonType } from "../type/PokemonType"
 import { usePokemonTypes } from "../util/UsePokemonTypes"
 import { TextField } from "@mui/material"
-import { SelectAutocomplete } from "./SelectAutocomplete"
-import { SelectedPokemonTypes } from "./type/SelectedPokemonTypes"
-import { TypeSplit } from "./type/TypeSplit"
-import { Loading } from "./Loading"
-import { atom, useRecoilValue, useSetRecoilState } from "recoil"
+import { SelectAutocomplete } from "../components/SelectAutocomplete"
+import { SelectedPokemonTypes } from "../components/type/SelectedPokemonTypes"
+import { TypeSplit } from "../components/type/TypeSplit"
+import { Loading } from "../components/Loading"
+import { MainContainer } from "../components/MainContainer"
+import { BackButton } from "../components/BackButton"
 
-const pokemonState = atom({
-    key: "pokemonState",
-    default: pokemonNames[Math.floor(Math.random() * pokemonNames.length)]!
-})
-
-export function CheckPokemon() {
-    const pokemonOption = useRecoilValue(pokemonState)
-    const setPokemonOption = useSetRecoilState(pokemonState)
+export default function Pokemon() {
+    const [pokemonOption, setPokemonOption] = useState<PokemonOption>(
+        pokemonNames[Math.floor(Math.random() * pokemonNames.length)]!
+    )
 
     const { data: pokemonTypes }: SWRResponse<PokemonType[], Error> = usePokemonTypes(pokemonOption)
 
     return (
-        <>
+        <MainContainer>
+            <BackButton />
             <SelectAutocomplete
                 disablePortal
                 disableClearable
@@ -46,6 +44,6 @@ export function CheckPokemon() {
             ) : (
                 <Loading />
             )}
-        </>
+        </MainContainer>
     )
 }
