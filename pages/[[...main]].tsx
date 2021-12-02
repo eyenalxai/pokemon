@@ -5,12 +5,13 @@ import { TabContext, TabList, TabPanel } from "@mui/lab"
 import { Pokemon } from "../components/Pokemon"
 import { Type } from "../components/Type"
 import { useRouter } from "next/router"
+import { Attack } from "../components/Attack"
 
 interface HomeProps {
     query: HomeQuery
 }
 
-type HomeQuery = "pokemon" | "type"
+type HomeQuery = "pokemon" | "type" | "attack"
 
 export default function Home({ query }: HomeProps) {
     const router = useRouter()
@@ -42,6 +43,14 @@ export default function Home({ query }: HomeProps) {
                                 textTransform: "none"
                             }}
                         />
+                        <Tab
+                            label="Attack"
+                            value="attack"
+                            onClick={(e) => move(e, "attack")}
+                            sx={{
+                                textTransform: "none"
+                            }}
+                        />
                     </TabList>
                 </Box>
                 <TabPanel value="pokemon">
@@ -49,6 +58,9 @@ export default function Home({ query }: HomeProps) {
                 </TabPanel>
                 <TabPanel value="type">
                     <Type />
+                </TabPanel>
+                <TabPanel value="attack">
+                    <Attack />
                 </TabPanel>
             </TabContext>
         </MainContainer>

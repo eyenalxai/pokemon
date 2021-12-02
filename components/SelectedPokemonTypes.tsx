@@ -1,4 +1,4 @@
-import { PokemonType } from "../../type/PokemonType"
+import { PokemonType } from "../type/PokemonType"
 import { TypeChip } from "./TypeChip"
 import { Box } from "@mui/material"
 

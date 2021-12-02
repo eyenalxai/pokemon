@@ -1,8 +1,8 @@
 import { Box } from "@mui/material"
 import React from "react"
 import { pokemonTypeNames } from "../util/PokemonTypeNames"
-import { TypeButton } from "./type/TypeButton"
-import { TypeSplit } from "./type/TypeSplit"
+import { TypeButton } from "./button/TypeButton"
+import { TypeSplit } from "./split/TypeSplit"
 import useSWR, { SWRResponse } from "swr"
 import { pokemonTypeApiUrl } from "../config/URL"
 import { multiFetcher } from "../util/MultiFetcher"
@@ -12,14 +12,15 @@ import { PokemonTypeName } from "../type/PokemonTypeName"
 import { isTypeClickable } from "../util/IsTypeClickable"
 import _ from "lodash"
 import { useRecoilValue, useSetRecoilState } from "recoil"
-import { pokemonTypesState } from "../recoil/atoms"
+import { pokemonTypeState } from "../recoil/atoms"
+import { ButtonGridWrapper } from "./button/ButtonGridWrapper"
 
 export function Type() {
-    const types = useRecoilValue(pokemonTypesState)
-    const setTypes = useSetRecoilState(pokemonTypesState)
+    const types = useRecoilValue(pokemonTypeState)
+    const setTypes = useSetRecoilState(pokemonTypeState)
 
     function handleSelect(type: PokemonTypeName) {
-        if (isTypeClickable(type, types)) {
+        if (isTypeClickable(type, types, 2)) {
             setTypes(_.xor(types, [type]))
         }
     }
@@ -31,14 +32,7 @@ export function Type() {
 
     return (
         <>
-            <Box
-                sx={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
-                    gap: "1em",
-                    marginTop: "2em"
-                }}
-            >
+            <ButtonGridWrapper>
                 {pokemonTypeNames.sort().map((type, idx) => {
                     return (
                         <Box key={idx}>
@@ -52,7 +46,7 @@ export function Type() {
                         </Box>
                     )
                 })}
-            </Box>
+            </ButtonGridWrapper>
             {pokemonTypes ? <TypeSplit pokemonTypes={pokemonTypes} /> : types.length > 0 ? <Loading /> : null}
         </>
     )

@@ -7,7 +7,12 @@ export const pokemonState = atom({
     default: pokemonNames[Math.floor(Math.random() * pokemonNames.length)]!
 })
 
-export const pokemonTypesState = atom({
+export const pokemonTypeState = atom({
     key: "pokemonTypesState",
+    default: [] as PokemonTypeName[]
+})
+
+export const pokemonAttackTypeState = atom({
+    key: "pokemonAttackTypeState",
     default: [] as PokemonTypeName[]
 })
