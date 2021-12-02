@@ -2,15 +2,15 @@ import React, { useState } from "react"
 import { Box, Tab } from "@mui/material"
 import { MainContainer } from "../components/MainContainer"
 import { TabContext, TabList, TabPanel } from "@mui/lab"
-import { CheckPokemon } from "../components/CheckPokemon"
-import { CheckTypes } from "../components/CheckTypes"
+import { Pokemon } from "../components/Pokemon"
+import { Type } from "../components/Type"
 import { useRouter } from "next/router"
 
 interface HomeProps {
     query: HomeQuery
 }
 
-type HomeQuery = "pokemon" | "types"
+type HomeQuery = "pokemon" | "type"
 
 export default function Home({ query }: HomeProps) {
     const router = useRouter()
@@ -35,9 +35,9 @@ export default function Home({ query }: HomeProps) {
                             }}
                         />
                         <Tab
-                            label="Types"
-                            value="types"
-                            onClick={(e) => move(e, "types")}
+                            label="Type"
+                            value="type"
+                            onClick={(e) => move(e, "type")}
                             sx={{
                                 textTransform: "none"
                             }}
@@ -45,10 +45,10 @@ export default function Home({ query }: HomeProps) {
                     </TabList>
                 </Box>
                 <TabPanel value="pokemon">
-                    <CheckPokemon />
+                    <Pokemon />
                 </TabPanel>
-                <TabPanel value="types">
-                    <CheckTypes />
+                <TabPanel value="type">
+                    <Type />
                 </TabPanel>
             </TabContext>
         </MainContainer>

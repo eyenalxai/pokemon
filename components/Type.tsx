@@ -11,14 +11,10 @@ import { Loading } from "./Loading"
 import { PokemonTypeName } from "../type/PokemonTypeName"
 import { isTypeClickable } from "../util/IsTypeClickable"
 import _ from "lodash"
-import { atom, useRecoilValue, useSetRecoilState } from "recoil"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { pokemonTypesState } from "../recoil/atoms"
 
-const pokemonTypesState = atom({
-    key: "pokemonTypesState",
-    default: [] as PokemonTypeName[]
-})
-
-export function CheckTypes() {
+export function Type() {
     const types = useRecoilValue(pokemonTypesState)
     const setTypes = useSetRecoilState(pokemonTypesState)
 
