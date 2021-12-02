@@ -1,15 +1,10 @@
-import { Breakpoint, Container } from "@mui/material"
+import { Container } from "@mui/material"
 import React from "react"
 
-interface MainContainerProps {
-    children: React.ReactNode
-    maxWidth?: Breakpoint
-}
-
-export function MainContainer({ children, maxWidth }: MainContainerProps) {
+export function MainContainer({ children }: { children: React.ReactNode }) {
     return (
         <Container
-            maxWidth={maxWidth || "xs"}
+            maxWidth={"xs"}
             sx={{
                 display: "grid",
                 justifyContent: "center",

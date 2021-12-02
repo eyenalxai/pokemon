@@ -1,21 +1,26 @@
 import { Box } from "@mui/material"
-import React, { useState } from "react"
+import React from "react"
 import { pokemonTypeNames } from "../util/PokemonTypeNames"
-import { TypeButton } from "../components/type/TypeButton"
-import { TypeSplit } from "../components/type/TypeSplit"
+import { TypeButton } from "./type/TypeButton"
+import { TypeSplit } from "./type/TypeSplit"
 import useSWR, { SWRResponse } from "swr"
 import { pokemonTypeApiUrl } from "../config/URL"
 import { multiFetcher } from "../util/MultiFetcher"
 import { PokemonType } from "../type/PokemonType"
-import { Loading } from "../components/Loading"
+import { Loading } from "./Loading"
 import { PokemonTypeName } from "../type/PokemonTypeName"
 import { isTypeClickable } from "../util/IsTypeClickable"
 import _ from "lodash"
-import { MainContainer } from "../components/MainContainer"
-import { BackButton } from "../components/BackButton"
+import { atom, useRecoilValue, useSetRecoilState } from "recoil"
 
-export default function Type() {
-    const [types, setTypes] = useState<PokemonTypeName[]>([])
+const pokemonTypesState = atom({
+    key: "pokemonTypesState",
+    default: [] as PokemonTypeName[]
+})
+
+export function CheckTypes() {
+    const types = useRecoilValue(pokemonTypesState)
+    const setTypes = useSetRecoilState(pokemonTypesState)
 
     function handleSelect(type: PokemonTypeName) {
         if (isTypeClickable(type, types)) {
@@ -29,8 +34,7 @@ export default function Type() {
     )
 
     return (
-        <MainContainer>
-            <BackButton />
+        <>
             <Box
                 sx={{
                     display: "grid",
@@ -54,6 +58,6 @@ export default function Type() {
                 })}
             </Box>
             {pokemonTypes ? <TypeSplit pokemonTypes={pokemonTypes} /> : types.length > 0 ? <Loading /> : null}
-        </MainContainer>
+        </>
     )
 }
