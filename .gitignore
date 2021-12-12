@@ -63,3 +63,8 @@ bower_components
 psd
 thumb
 sketch
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
